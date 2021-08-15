@@ -25,7 +25,8 @@ export const view = {
         modal.classList.add('hidden')
     },
     render: function (position, data) {
-        // String with card info 
+        if(data) {
+           // String with card info 
         let tasksString = data.map(element => {
             if(element.isDone) {
                 return card(element.title, element.text, "Task is done", "bg-green-200")
@@ -36,5 +37,6 @@ export const view = {
         
         // push to DOM structure
         position.insertAdjacentHTML('beforeEnd', tasksString)
+        }
     },
 }
