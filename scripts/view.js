@@ -11,12 +11,8 @@ export const view = {
         root.insertAdjacentHTML('beforeEnd', main())
         root.insertAdjacentHTML('afterbegin', modal())
         
-        // If there is any data in localStorage - render it
-        /*
-        if(model.get()) {
-            view.render(model.get()) 
-        }
-        */
+        // Get localStorage data
+        model.data = model.get()
     },
     openModal: function(modal) {
         modal.classList.remove('hidden')
@@ -24,7 +20,7 @@ export const view = {
     closeModal: function (modal) {
         modal.classList.add('hidden')
     },
-    render: function (position, data) {
+    render: function (data) {
         if(data) {
            // String with card info 
         let tasksString = data.map(element => {
@@ -33,10 +29,10 @@ export const view = {
             } else {
                 return card(element.title, element.text, element.time, "bg-gray-50")
             }
-        }).join()
+        }).join('')
         
         // push to DOM structure
-        position.insertAdjacentHTML('beforeEnd', tasksString)
+        root.querySelector('#main').insertAdjacentHTML('beforeEnd', tasksString)
         }
     },
 }

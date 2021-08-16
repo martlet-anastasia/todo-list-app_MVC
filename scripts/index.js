@@ -9,27 +9,7 @@ const root = document.querySelector('#root')
 
 // App
 function app() {
-    view.init(root)
-    const main = document.querySelector('#main')
-    
-    model.data = model.get()
-    view.render(main, model.data)
-
-    // Testing that function works
-
-    // open modal window or any other element 
-    // const modalOverlay = document.querySelector('#modalOverlay')
-    // view.openModal(modalOverlay)
-
-    // close modal window or any other element 
-    // view.closeModal(modalOverlay)
-
-    // getting data from local Storage
-    // model.data = model.get()
-    // console.log(model.data)
-    
-    // set data to local Storage
-    /*
+    // set data to local Storage - optional, just for tests
     let todos = [
         {
             title: "Task1",
@@ -47,12 +27,28 @@ function app() {
         }
     ]
     model.set(todos)
-    console.log(model.data)
-    */
+    // console.log(model.data)
+
+    view.init(root)
+    view.render(model.data)
+
+    // Testing that function works
+
+    // open modal window or any other element 
+    // const modalOverlay = document.querySelector('#modalOverlay')
+    // view.openModal(modalOverlay)
+
+    // close modal window or any other element 
+    // view.closeModal(modalOverlay)
+
+    // getting data from local Storage
+    // model.data = model.get()
+    // console.log(model.data)  
 
     // render function
     // view.render(model.data)
 
 }
 
+// Running app
 app()
