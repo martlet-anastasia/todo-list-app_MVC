@@ -59,13 +59,13 @@ function modal() {
     `
 }
 
-function card(title, text, time, bg_color) {
+function card(obj) {
     return `
     <div class="bg-white shadow overflow-hidden sm:rounded-lg w-60 mb-5">
-        <h2 class="text-lg leading-6 font-medium text-gray-900 px-4 pt-4 sm:px-6">${title}</h2>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500 px-4 pb-5 sm:px-6">${text}s</p>
-        <div class="border-t border-b border-gray-200 ${bg_color} px-4 py-3 sm:px-6">
-            <p class="text-xs font-medium text-gray-500">${time}</p>
+        <h2 class="text-lg leading-6 font-medium text-gray-900 px-4 pt-4 sm:px-6">${obj.title}</h2>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500 px-4 pb-5 sm:px-6">${obj.text}s</p>
+        <div class="border-t border-b border-gray-200 ${obj.isDone ? "bg-green-200" : "bg-gray-50"} px-4 py-3 sm:px-6">
+            <p class="text-xs font-medium text-gray-500">${obj.time}</p>
         </div>
         <div class="text-sm text-gray-500 px-4 pt-3 pb-2 sm:px-5 flex justify-between">
             <button>
@@ -83,22 +83,15 @@ function card(title, text, time, bg_color) {
     `
 }
 
-function header(button) {
-    // Placeholder for several buttons in the header with specific names
+function header() {
     return `
     <div class="top-0 py-3 sticky bg-gray-100 flex sm:justify-end justify-center">
         <div class="sm:mx-5">
-            ${button}
+            <button class="bg-gray-600 rounded-none sm:rounded-md sm:mr-2 px-3 py-1 text-white sm:text-xs hover:bg-gray-700" id="addBtn">
+                Create new task
+            </button>
         </div>
     </div>
-    `
-}
-
-function button(btnText) {
-    return `
-    <button class="bg-gray-600 rounded-none sm:rounded-md sm:mr-2 px-3 py-1 text-white sm:text-xs hover:bg-gray-700" id="addBtn">
-        ${btnText}
-    </button>
     `
 }
 
@@ -108,4 +101,4 @@ function main() {
     `
 }
 
-export { modal, card, header, button, main }
+export { modal, card, header, main }

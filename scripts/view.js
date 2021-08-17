@@ -1,13 +1,10 @@
-import { modal, card, header, button, main } from "./templates.js"
+import { modal, card, header, main } from "./templates.js"
 import { model } from "./model.js"
 
 export const view = {
     init: function(root) {
-        // Add needed buttons
-        let header_button = `${button("Add next task")}${button("Delete last task")}`
-        
         // Show static elements - header & modal window (hidden)
-        root.insertAdjacentHTML('afterbegin', header(`${header_button}`))
+        root.insertAdjacentHTML('afterbegin', header())
         root.insertAdjacentHTML('beforeEnd', main())
         root.insertAdjacentHTML('afterbegin', modal())
         
@@ -23,16 +20,9 @@ export const view = {
     render: function (data) {
         if(data) {
            // String with card info 
-        let tasksString = data.map(element => {
-            if(element.isDone) {
-                return card(element.title, element.text, "Task is done", "bg-green-200")
-            } else {
-                return card(element.title, element.text, element.time, "bg-gray-50")
-            }
-        }).join('')
-        
-        // push to DOM structure
-        root.querySelector('#main').insertAdjacentHTML('beforeEnd', tasksString)
+            const tasksString = data.map(element => card(element)).join('')
+            // push to DOM structure
+            root.querySelector('#main').insertAdjacentHTML('beforeEnd', tasksString)
         }
     },
 }

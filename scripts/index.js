@@ -27,27 +27,9 @@ function app() {
         }
     ]
     model.set(todos)
-    // console.log(model.data)
 
     view.init(root)
     view.render(model.data)
-
-    // Testing that function works
-
-    // open modal window or any other element 
-    // const modalOverlay = document.querySelector('#modalOverlay')
-    // view.openModal(modalOverlay)
-
-    // close modal window or any other element 
-    // view.closeModal(modalOverlay)
-
-    // getting data from local Storage
-    // model.data = model.get()
-    // console.log(model.data)  
-
-    // render function
-    // view.render(model.data)
-
 }
 
 // Running app
